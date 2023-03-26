@@ -59,7 +59,7 @@ public class CustomArrayList<T> implements CustomList<T> {
         items = Stream.concat(Arrays.stream(Arrays.copyOfRange(items,0,index)),
                         Arrays.stream(Arrays.copyOfRange(items,index+1,items.length)))
                 .toArray();
-
+        size--;
 
         return (T) items;
     }
