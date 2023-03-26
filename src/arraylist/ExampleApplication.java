@@ -7,6 +7,13 @@ public class ExampleApplication {
             myCustomList.add("element " + (i+1));
         }
 
+
+        myCustomList.remove(9);
+        myCustomList.remove(7);
+        myCustomList.add("10000");
+        myCustomList.add(7,"100009");
+        myCustomList.add(7,"100008");
+        myCustomList.add("200009");
         myCustomList.add("element Test");
         System.out.println("This the maximum amount " + myCustomList.getSize());
         System.out.println("Get the value " + myCustomList.getSize());
