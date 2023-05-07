@@ -43,6 +43,8 @@ class CustomArrayListTest {
         //I expect there to be an Integer with value 10 sorted in the first
         //index in my customelist
 
+
+
         for(int i = 0;i<10000;i++ ){
             System.out.println(customList.get(i));
             assertEquals(customList.get(i),i+1);

@@ -1,6 +1,5 @@
 package arraylist;
 
-
 import java.util.Arrays;
 import java.util.stream.Stream;
 
@@ -29,8 +28,19 @@ public class CustomArrayList<T> implements CustomList<T> {
         if (index > size || index < 0){
             throw new IndexOutOfBoundsException("Item doesn't exists");
         }
-        items[index] = item;
-        return false;
+        if(size == items.length){
+            items = Arrays.copyOf(items,size*2);
+            //items is now new list
+        }
+        Object[] insert = new Object[1];
+        insert[0] = item;
+
+        items = Stream.concat(Stream.concat(Arrays.stream(Arrays.copyOfRange(items,0,index)),
+                        Arrays.stream(Arrays.copyOfRange(insert,0,insert.length)))
+                ,Arrays.stream(Arrays.copyOfRange(items,index,items.length))).toArray();
+        size++;
+
+        return true;
     }
 
     @Override
@@ -55,7 +65,7 @@ public class CustomArrayList<T> implements CustomList<T> {
             throw new IndexOutOfBoundsException("Item doesn't exists ");
 
         }
-        //I could have done this with loops and should be less operations b
+        //I could have done this with loops and should be less operations
         items = Stream.concat(Arrays.stream(Arrays.copyOfRange(items,0,index)),
                         Arrays.stream(Arrays.copyOfRange(items,index+1,items.length)))
                 .toArray();
